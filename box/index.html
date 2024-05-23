@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>boxed</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="main">
+        <div class="boxed" id="box">
+            <div class="rized-r rized" id="rized-r"></div>
+            <div class="rized-l rized" id="rized-l"></div>
+            <div class="rized-t rized" id="rized-t"></div>
+            <div class="rized-b rized" id="rized-b"></div>
+        </div>
+    </main>
+</body>
+<script>
+    $box = document.getElementById('box')
+    $rized_r = document.getElementById('rized-r')
+    $rized_l = document.getElementById('rized-l')
+    $rized_t = document.getElementById('rized-t')
+    $rized_b = document.getElementById('rized-b')
+
+    let x = 0
+    let y = 0
+    const styles = window.getComputedStyle($box)
+    let width = parseInt(styles.width, 10)
+    let height = parseInt(styles.height, 10)
+
+
+    // cuando se oprima el boton de derecha
+    const mouseDownR = (event) => {
+        x = event.clientX                
+        document.addEventListener("mousemove", mouseMoveR)
+        document.addEventListener("mouseup", mouseUpR )
+        document.body.style.cursor = 'ew-resize'
+    }
+
+    const mouseMoveR = (event)=>{
+        const dx = event.clientX - x
+        x = event.clientX
+        width = width + dx
+        $box.style.width = `${width}px`
+    }
+
+    const mouseUpR = () => {
+        document.removeEventListener("mousemove",mouseMoveR)
+        document.removeEventListener("mouseup",mouseUpR)
+        document.body.style.cursor = 'default'
+    }
+
+    // cuando se oprima el boton de izquierda
+    const mouseDownL = (event) => {
+        x = event.clientX
+        document.addEventListener("mousemove", mouseMoveL)
+        document.addEventListener("mouseup", mouseUpL)
+        document.body.style.cursor = 'ew-resize'
+    }
+
+    const mouseMoveL = (event) => {
+        const dx = event.clientX - x
+        x = event.clientX
+        width = width - dx
+        $box.style.width = `${width}px`
+    }
+
+    const mouseUpL = () => {
+        document.removeEventListener("mousemove",mouseMoveL)
+        document.removeEventListener("mouseup",mouseUpL)
+        document.body.style.cursor = 'default'
+    }
+
+    // cuando se oprima el boton de arriba
+    const mouseDownT = (event) => {
+        y = event.clientY
+        document.addEventListener("mousemove", mouseMoveT)
+        document.addEventListener("mouseup", mouseUpT )
+        document.body.style.cursor = 'ns-resize'
+    }
+
+    const mouseMoveT = (event)=>{
+        const dy = event.clientY - y
+        y = event.clientY
+        height = height - dy
+        $box.style.height = `${height}px`
+    }
+
+    const mouseUpT = () => {
+        document.removeEventListener("mousemove",mouseMoveT)
+        document.removeEventListener("mouseup", mouseMoveT )
+        document.body.style.cursor = 'default'
+    }
+
+    // cuando se oprima el boton de abajo
+    const mouseDownB = (event) => {
+        y = event.clientY        
+        document.addEventListener("mousemove", mouseMoveB)
+        document.addEventListener("mouseup", mouseUpB )
+        document.body.style.cursor = 'ns-resize'
+    }
+
+    const mouseMoveB = (event)=>{
+        const dy = event.clientY - y
+        y = event.clientY
+        height = height + dy
+        $box.style.height = `${height}px`
+    }
+    
+    const mouseUpB = () => {
+        document.removeEventListener("mousemove",mouseMoveB)
+        document.removeEventListener("mouseup", mouseUpB )
+        document.body.style.cursor = 'default'
+    }
+
+    // añadimos las funciones
+    $rized_r.addEventListener("mousedown", mouseDownR)
+    $rized_l.addEventListener("mousedown", mouseDownL)
+    $rized_t.addEventListener("mousedown", mouseDownT)
+    $rized_b.addEventListener("mousedown", mouseDownB)
+</script>
+</html>

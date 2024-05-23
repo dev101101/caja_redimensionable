@@ -1,0 +1,54 @@
+body{
+    padding: 0;  
+    background-color: #0f0f0f;
+}
+.main{
+    height: 100%;
+    width: 100%;
+}
+
+.boxed{
+    width:  150px;
+    height: 150px;
+    background-color:rgb(27, 173, 218);
+    position: relative;
+    display: grid;
+
+}
+
+.rized{
+    background-color: blanchedalmond;
+    position: absolute;
+}
+.rized-r{
+    right: 0px;
+    width: 4px;
+    height: 100%;
+}
+.rized-r:hover{
+    cursor: ew-resize;
+}
+.rized-l{
+    left: 0px;
+    width: 4px;
+    height: 100%;
+}
+.rized-l:hover{
+    cursor: ew-resize;
+}
+.rized-t{
+    top: 0px;
+    height: 4px;
+    width: 100%;
+}
+.rized-t:hover{
+    cursor: ns-resize;
+}
+.rized-b{
+    bottom: 0px;
+    width: 100%;
+    height: 4px;
+}
+.rized-b:hover{
+    cursor: ns-resize;
+}
